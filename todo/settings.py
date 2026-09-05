@@ -12,24 +12,20 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%f6xydjr41a^l2i%tqhoj2hrs3gu1+ot(5pg!-r9h@3uj#cgh)'
-# SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-#haven't finished yet, but must be like this:
-# SECRET_KEY = os.environ.get('SECRET')
-# DEBUG = True if os.environ.get('DEBUG', 'off') == 'on' else False
-
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -45,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'tasks',
-    
 ]
 
 MIDDLEWARE = [
