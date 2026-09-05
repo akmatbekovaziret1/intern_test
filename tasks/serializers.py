@@ -45,5 +45,5 @@ class TagDetailSerializer(serializers.ModelSerializer):
         
 class TagCreateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Task
+        model = Tag
         fields = '__all__'
