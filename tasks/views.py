@@ -11,6 +11,7 @@ from .serializers import (
     TaskCreateSerializer,
     TagListSerializer,
     TagDetailSerializer,
+    TagCreateSerializer,
 )
 
 
@@ -44,11 +45,13 @@ class TagListCreateAPIView(ListCreateAPIView):
     serializer_class = TagListSerializer
 
     def get_serializer_class(self):
-            if self.request.method == 'GET':
-                return TagListSerializer
-    
-            return TagDetailSerializer
+        if self.request.method == 'GET':
+            return TagListSerializer
+
+        return TagCreateSerializer
     
 class TagDetailAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagDetailSerializer
+    
+    

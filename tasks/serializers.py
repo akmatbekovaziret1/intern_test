@@ -32,16 +32,18 @@ class TaskCreateSerializer(serializers.ModelSerializer):
 
 
 class TagListSerializer(serializers.ModelSerializer):
-    task = TaskListSerializer(read_only = True)
-
     class Meta:
         model = Tag
         fields = '__all__'
 
-
 class TagDetailSerializer(serializers.ModelSerializer):
-    task = TaskDetailSerializer(read_only = True)
+    task = TaskDetailSerializer(read_only=True)
 
     class Meta:
         model = Tag
+        fields = '__all__'
+        
+class TagCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
         fields = '__all__'
